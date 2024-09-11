@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "black",
-    fontFamily: fonts.title,
+    fontFamily: fonts.text,
     height: 30,
     fontSize: 28,
   },

@@ -1,4 +1,4 @@
 export const fonts = {
-  title: "",
-  text: "",
+  title: "Inter_700Bold",
+  text: "Inter_400Regular",
 };
