@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import { StyleSheet, View } from "react-native";
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import {
   useFonts,
   Inter_400Regular,
@@ -20,9 +21,11 @@ export default function App() {
     return null;
   }
   return (
-    <View style={styles.container} onLayout={onLayputRootView}>
-      <Header />
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container} onLayout={onLayputRootView}>
+        <Header />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 

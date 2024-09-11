@@ -20,7 +20,7 @@ export default components;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: Platform.OS === "ios" ? 50 : 0,
+    marginTop: 0,
     padding: 10,
     borderBottomWidth: 1,
     borderColor: "#bbb",
