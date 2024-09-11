@@ -1,6 +1,7 @@
 import React from "react";
 import { Image, View, Text, StyleSheet, Platform } from "react-native";
 import { fonts } from "../styles/fonts";
+import Entypo from "@expo/vector-icons/Entypo";
 
 // import { Container } from './styles';
 
@@ -8,7 +9,7 @@ const components = () => {
   return (
     <View style={styles.container}>
       <View style={styles.rowContainer}>
-        <Image style={styles.image} />
+        <Entypo name="camera" size={30} color={"black"} />
         <Text style={styles.title}>Lambe Lambe</Text>
       </View>
     </View>
@@ -19,7 +20,7 @@ export default components;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: Platform.OS === "ios" ? 20 : 0,
+    marginTop: Platform.OS === "ios" ? 50 : 0,
     padding: 10,
     borderBottomWidth: 1,
     borderColor: "#bbb",
@@ -27,6 +28,7 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: "row",
     alignItems: "center",
+    gap: 15,
   },
   image: {
     height: 30,
@@ -37,6 +39,6 @@ const styles = StyleSheet.create({
     color: "black",
     fontFamily: fonts.text,
     height: 30,
-    fontSize: 28,
+    fontSize: 25,
   },
 });
