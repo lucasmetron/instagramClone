@@ -20,7 +20,6 @@ export default Post;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "red",
   },
   image: {
     width: Dimensions.get("window").width,

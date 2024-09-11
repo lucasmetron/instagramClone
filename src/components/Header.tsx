@@ -10,7 +10,7 @@ const Header = () => {
     <View style={styles.container}>
       <View style={styles.rowContainer}>
         <Entypo name="camera" size={30} color={"black"} />
-        <Text style={styles.title}>Lambe Lambe</Text>
+        <Text style={styles.title}>InstaCopy</Text>
       </View>
     </View>
   );
