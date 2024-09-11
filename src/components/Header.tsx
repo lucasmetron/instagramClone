@@ -1,11 +1,11 @@
 import React from "react";
-import { Image, View, Text, StyleSheet, Platform } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { fonts } from "../styles/fonts";
 import Entypo from "@expo/vector-icons/Entypo";
 
 // import { Container } from './styles';
 
-const components = () => {
+const Header = () => {
   return (
     <View style={styles.container}>
       <View style={styles.rowContainer}>
@@ -16,7 +16,7 @@ const components = () => {
   );
 };
 
-export default components;
+export default Header;
 
 const styles = StyleSheet.create({
   container: {
