@@ -15,8 +15,8 @@ import { CommentProps } from "./src/types/CommetProps";
 export default function App() {
   const [fontsLoaded] = useFonts({ Inter_400Regular, Inter_700Bold });
   const comments: CommentProps[] = [
-    { nickName: "Lais", comment: "Bla bla" },
-    { nickName: "Camila", comment: "teste" },
+    { nickName: "Lais", comment: "Excelente foto" },
+    { nickName: "Camila", comment: "Muito ruim! Faço o seu melhor" },
   ];
 
   const onLayputRootView = useCallback(async () => {

@@ -3,6 +3,7 @@ import { Dimensions, Image, StyleSheet, View } from "react-native";
 import Author from "./Author";
 import Comments from "./Comments";
 import { CommentProps } from "../types/CommetProps";
+import AddComments from "./AddComments";
 
 // import { Container } from './styles';
 
@@ -17,6 +18,7 @@ function Post({ image, comments }: PostProps) {
       <Image style={styles.image} source={{ uri: image }} />
       <Author />
       <Comments comments={comments} />
+      <AddComments />
     </View>
   );
 }
