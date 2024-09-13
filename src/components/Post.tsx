@@ -16,7 +16,11 @@ interface PostProps {
 function Post({ image, comments, nameAuthor }: PostProps) {
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={{ uri: image }} />
+      <Image
+        style={styles.image}
+        resizeMode="stretch"
+        source={{ uri: image }}
+      />
       <Author name={nameAuthor} />
       <Comments comments={comments} />
       <AddComments />
@@ -33,7 +37,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: Dimensions.get("window").width,
-    height: (Dimensions.get("window").width * 3) / 4,
+    height: (Dimensions.get("window").width * 5) / 4,
     resizeMode: "cover",
     backgroundColor: "gray",
   },

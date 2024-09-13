@@ -13,7 +13,7 @@ const Feed = () => {
       id: Math.random() * 100,
       nickname: faker.person.fullName(),
       email: faker.internet.email(),
-      image: faker.image.url({ width: 300, height: 300 }),
+      image: faker.image.url({ width: 900, height: 900 }),
       coments:
         i !== 3
           ? [
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF",
+    backgroundColor: "white",
   },
 });
 

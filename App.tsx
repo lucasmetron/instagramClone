@@ -7,8 +7,9 @@ import {
   Inter_700Bold,
 } from "@expo-google-fonts/inter";
 import * as SplashScreen from "expo-splash-screen";
+import { NavigationContainer } from "@react-navigation/native";
 
-import Feed from "./src/screens/Feed";
+import Navigator from "./src/Navigator";
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Inter_400Regular, Inter_700Bold });
@@ -23,7 +24,9 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container} onLayout={onLayputRootView}>
-        <Feed />
+        <NavigationContainer>
+          <Navigator />
+        </NavigationContainer>
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -32,5 +35,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "white",
   },
 });
