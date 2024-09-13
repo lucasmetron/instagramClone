@@ -23,14 +23,12 @@ const Feed = () => {
               },
               {
                 nickName: faker.person.fullName(),
-                comment: faker.lorem.text(),
+                comment: faker.lorem.lines(1),
               },
             ]
           : [],
     });
   }
-
-  console.log("posts: ", posts);
 
   return (
     <View style={styles.conatiner}>

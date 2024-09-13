@@ -1,6 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import Gravatar from "@krosben/react-native-gravatar";
+import { StyleSheet, View, Text, Image } from "react-native";
 import { faker } from "@faker-js/faker";
 
 // import { Container } from './styles';
@@ -12,7 +11,10 @@ interface AuthorProps {
 const Author = ({ name }: AuthorProps) => {
   return (
     <View style={styles.container}>
-      <Gravatar email={faker.internet.email()} size={80} borderStyle="circle" />
+      <Image
+        style={styles.img}
+        source={{ uri: faker.image.url({ width: 300, height: 300 }) }}
+      />
       <Text style={styles.nickName}>{name}</Text>
     </View>
   );
@@ -32,5 +34,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginLeft: 10,
     fontWeight: "bold",
+  },
+  img: {
+    width: 40,
+    height: 40,
+    borderRadius: 40,
+    backgroundColor: "#555",
   },
 });

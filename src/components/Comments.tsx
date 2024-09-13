@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Dimensions } from "react-native";
 
 import { CommentProps } from "../types/CommetProps";
 
@@ -18,7 +18,9 @@ const Comments = ({ comments }: CommentsProps) => {
         comments.map((item, i) => (
           <View style={styles.commentContainer} key={i}>
             <Text style={styles.nickName}>{item.nickName}: </Text>
-            <Text style={styles.comment}>{item.comment}</Text>
+            <Text numberOfLines={3} style={styles.comment}>
+              {item.comment}
+            </Text>
           </View>
         ))
       )}
@@ -28,12 +30,14 @@ const Comments = ({ comments }: CommentsProps) => {
 
 const styles = StyleSheet.create({
   container: {
+    width: Dimensions.get("window").width,
     flex: 1,
     paddingHorizontal: 10,
   },
   commentContainer: {
     flexDirection: "row",
     marginTop: 5,
+    flexWrap: "wrap",
   },
   nickName: {
     marginLeft: 5,
