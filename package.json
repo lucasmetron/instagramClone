@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/inter": "^0.2.3",
+    "@faker-js/faker": "^9.0.0",
     "@krosben/react-native-gravatar": "^0.0.1",
     "@types/react": "~18.2.79",
     "expo": "~51.0.28",

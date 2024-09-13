@@ -10,13 +10,14 @@ import AddComments from "./AddComments";
 interface PostProps {
   image: string;
   comments: CommentProps[];
+  nameAuthor: string;
 }
 
-function Post({ image, comments }: PostProps) {
+function Post({ image, comments, nameAuthor }: PostProps) {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={{ uri: image }} />
-      <Author />
+      <Author name={nameAuthor} />
       <Comments comments={comments} />
       <AddComments />
     </View>

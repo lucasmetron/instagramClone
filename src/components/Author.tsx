@@ -1,18 +1,19 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import Gravatar from "@krosben/react-native-gravatar";
+import { faker } from "@faker-js/faker";
 
 // import { Container } from './styles';
 
-const Author = () => {
+interface AuthorProps {
+  name: string;
+}
+
+const Author = ({ name }: AuthorProps) => {
   return (
     <View style={styles.container}>
-      <Gravatar
-        email="laaispinheiroo@gmail.com"
-        size={80}
-        borderStyle="circle"
-      />
-      <Text style={styles.nickName}>Lucas Rosa</Text>
+      <Gravatar email={faker.internet.email()} size={80} borderStyle="circle" />
+      <Text style={styles.nickName}>{name}</Text>
     </View>
   );
 };
