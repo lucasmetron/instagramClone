@@ -35,5 +35,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     height: (Dimensions.get("window").width * 3) / 4,
     resizeMode: "cover",
+    backgroundColor: "gray",
   },
 });
