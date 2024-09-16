@@ -104,13 +104,21 @@ const AddPhoto = () => {
           />
         </View>
 
-        <TouchableOpacity onPress={pickImage} style={styles.button}>
-          <Text style={styles.buttonText}>Escolher da galeria</Text>
-        </TouchableOpacity>
+        <View style={{ flexDirection: "row", gap: 5 }}>
+          <TouchableOpacity
+            onPress={pickImage}
+            style={{ ...styles.button, flex: 1 }}
+          >
+            <Text style={styles.buttonText}>Escolher da galeria</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={takePhoto} style={styles.button}>
-          <Text style={styles.buttonText}>Tirar uma foto</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={takePhoto}
+            style={{ ...styles.button, flex: 1 }}
+          >
+            <Text style={styles.buttonText}>Tirar uma foto</Text>
+          </TouchableOpacity>
+        </View>
 
         <TextInput
           style={styles.input}
@@ -119,9 +127,11 @@ const AddPhoto = () => {
           onChangeText={(text) => setComment(text)}
         />
 
-        <TouchableOpacity onPress={save} style={styles.button}>
-          <Text style={styles.buttonText}>Salvar</Text>
-        </TouchableOpacity>
+        <View style={{ flexDirection: "row", gap: 5 }}>
+          <TouchableOpacity onPress={save} style={styles.button}>
+            <Text style={styles.buttonText}>Salvar</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   );
@@ -129,6 +139,7 @@ const AddPhoto = () => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingHorizontal: 10,
     flex: 1,
     alignItems: "center",
   },
@@ -149,17 +160,19 @@ const styles = StyleSheet.create({
     resizeMode: "stretch",
   },
   buttonText: {
-    fontSize: 20,
+    textAlign: "center",
+    fontSize: 15,
     color: "#fff",
   },
   input: {
-    width: "90%",
+    width: "100%",
     padding: 10,
     borderColor: "#ccc",
     borderWidth: 1,
     marginTop: 10,
   },
   button: {
+    flex: 1,
     fontSize: 30,
     padding: 10,
     backgroundColor: "#4286f4",
