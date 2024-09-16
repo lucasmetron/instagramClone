@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -19,18 +19,41 @@ interface ImageProps {
 
 const AddPhoto = () => {
   const [image, setImage] = useState<null | ImageProps>(null);
-  console.log("image: ", image);
-  const [comment, setCommet] = useState("");
+  const [comment, setComment] = useState("");
 
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
     });
-    console.log("result: ", result);
+
+    if (!result.canceled) {
+      setImage({
+        uri: result.assets[0].uri,
+        base64: result?.assets[0]?.base64 || undefined,
+      });
+    }
+  };
+
+  const takePhoto = async () => {
+    const { granted } = await ImagePicker.getCameraPermissionsAsync();
+    console.log("granted: ", granted);
+
+    if (!granted) {
+      Alert.alert(
+        "Câmera não disponível",
+        "A câmera não está disponível no simulador ou não possui permissões."
+      );
+      return;
+    }
+
+    let result = await ImagePicker.launchCameraAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
 
     if (!result.canceled) {
       setImage({
@@ -43,28 +66,61 @@ const AddPhoto = () => {
   const save = async () => {
     Alert.alert("Imagem adicionada!");
   };
+
+  useEffect(() => {
+    (async () => {
+      // Solicita permissões para acessar a galeria
+      const mediaLibraryStatus =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
+      console.log("mediaLibraryStatus: ", mediaLibraryStatus);
+      if (mediaLibraryStatus.status !== "granted") {
+        Alert.alert(
+          "Desculpe, precisamos da permissão para acessar a galeria!"
+        );
+      }
+
+      // Solicita permissões para acessar a câmera
+      const cameraStatus = await ImagePicker.requestCameraPermissionsAsync();
+      console.log("cameraStatus: ", cameraStatus);
+      if (cameraStatus.status !== "granted") {
+        Alert.alert("Desculpe, precisamos da permissão para acessar a câmera!");
+      }
+    })();
+  }, []);
+
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.title}>Compartilhe uma image</Text>
+        <Text style={styles.title}>Compartilhe uma imagem</Text>
 
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{ uri: image?.uri || "" }} />
+          <Image
+            style={styles.image}
+            source={{
+              uri:
+                image?.uri ||
+                "https://t3.ftcdn.net/jpg/04/60/01/36/360_F_460013622_6xF8uN6ubMvLx0tAJECBHfKPoNOR5cRa.jpg",
+            }}
+          />
         </View>
 
-        <TouchableOpacity onPress={pickImage} style={styles.buttom}>
-          <Text style={styles.buttonText}>Escolha a foto</Text>
+        <TouchableOpacity onPress={pickImage} style={styles.button}>
+          <Text style={styles.buttonText}>Escolher da galeria</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={takePhoto} style={styles.button}>
+          <Text style={styles.buttonText}>Tirar uma foto</Text>
         </TouchableOpacity>
 
         <TextInput
           style={styles.input}
           placeholder="Algum comentário para foto?"
           value={comment}
-          onChangeText={(text) => setCommet(text)}
+          onChangeText={(text) => setComment(text)}
         />
 
-        <TouchableOpacity onPress={save} style={styles.buttom}>
-          <Text style={styles.buttom}>Salvar</Text>
+        <TouchableOpacity onPress={save} style={styles.button}>
+          <Text style={styles.buttonText}>Salvar</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -96,11 +152,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#fff",
   },
-  input: {},
-  buttom: {
+  input: {
+    width: "90%",
+    padding: 10,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    marginTop: 10,
+  },
+  button: {
     fontSize: 30,
     padding: 10,
     backgroundColor: "#4286f4",
+    marginTop: 10,
   },
 });
 
