@@ -3,6 +3,7 @@ import { Dimensions } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Feed from "./screens/Feed";
 import Entypo from "@expo/vector-icons/Entypo";
+import AddPhoto from "./screens/AddPhoto";
 
 const Tab = createBottomTabNavigator();
 
@@ -11,6 +12,7 @@ const Navigator = () => {
     <Tab.Navigator
       initialRouteName="Feed"
       screenOptions={({ route }) => ({
+        tabBarShowLabel: false,
         tabBarIcon: ({ color }) => {
           switch (route.name) {
             case "Feed":
@@ -39,7 +41,7 @@ const Navigator = () => {
       })}
     >
       <Tab.Screen name="Feed" component={Feed} />
-      <Tab.Screen name="Add Photo" component={Feed} />
+      <Tab.Screen name="Add Photo" component={AddPhoto} />
       <Tab.Screen name="Profile" component={Feed} />
     </Tab.Navigator>
   );
