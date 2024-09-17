@@ -10,6 +10,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
 
 import Navigator from "./src/Navigator";
+import { IsLoggedInProvider } from "./src/context/useLogin";
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Inter_400Regular, Inter_700Bold });
@@ -24,9 +25,11 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container} onLayout={onLayputRootView}>
-        <NavigationContainer>
-          <Navigator />
-        </NavigationContainer>
+        <IsLoggedInProvider>
+          <NavigationContainer>
+            <Navigator />
+          </NavigationContainer>
+        </IsLoggedInProvider>
       </SafeAreaView>
     </SafeAreaProvider>
   );
