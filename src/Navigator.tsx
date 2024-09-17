@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Feed from "./screens/Feed";
 import Entypo from "@expo/vector-icons/Entypo";
 import AddPhoto from "./screens/AddPhoto";
+import Profile from "./screens/Profile";
 
 const Tab = createBottomTabNavigator();
 
@@ -42,7 +43,7 @@ const Navigator = () => {
     >
       <Tab.Screen name="Feed" component={Feed} />
       <Tab.Screen name="Add Photo" component={AddPhoto} />
-      <Tab.Screen name="Profile" component={Feed} />
+      <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
 };

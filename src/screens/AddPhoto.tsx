@@ -39,7 +39,6 @@ const AddPhoto = () => {
 
   const takePhoto = async () => {
     const { granted } = await ImagePicker.getCameraPermissionsAsync();
-    console.log("granted: ", granted);
 
     if (!granted) {
       Alert.alert(
