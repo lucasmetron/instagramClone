@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View, TouchableOpacity, Text, Image } from "react-native";
 import { faker } from "@faker-js/faker";
+import IsLoggedInContext from "../context/useLogin";
 
 const Profile = () => {
-  function logout() {}
+  const { setIsLoggedIn } = useContext(IsLoggedInContext);
+
+  function logout() {
+    setIsLoggedIn(false);
+  }
 
   return (
     <View style={styles.container}>

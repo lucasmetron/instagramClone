@@ -58,7 +58,7 @@ const Navigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       {isLoggedIn ? (
-        <Stack.Screen name="Main" component={TabNavigator} />
+        <Stack.Screen name="Tabs" component={TabNavigator} />
       ) : (
         <Stack.Screen name="Login" component={Login} />
       )}

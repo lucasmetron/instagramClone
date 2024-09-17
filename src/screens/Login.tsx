@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { useState, useContext } from "react";
 import {
   StyleSheet,
@@ -11,12 +10,12 @@ import IsLoggedInContext from "../context/useLogin";
 
 const Login = () => {
   const { setIsLoggedIn } = useContext(IsLoggedInContext);
-  const navigate: any = useNavigation();
   const [dataLogin, setDataLogin] = useState({ email: "", password: "" });
 
   function login() {
     setIsLoggedIn(true);
   }
+
   return (
     <View style={styles.container}>
       <TextInput

@@ -71,7 +71,6 @@ const AddPhoto = () => {
       // Solicita permissões para acessar a galeria
       const mediaLibraryStatus =
         await ImagePicker.requestMediaLibraryPermissionsAsync();
-      console.log("mediaLibraryStatus: ", mediaLibraryStatus);
       if (mediaLibraryStatus.status !== "granted") {
         Alert.alert(
           "Desculpe, precisamos da permissão para acessar a galeria!"
@@ -80,7 +79,6 @@ const AddPhoto = () => {
 
       // Solicita permissões para acessar a câmera
       const cameraStatus = await ImagePicker.requestCameraPermissionsAsync();
-      console.log("cameraStatus: ", cameraStatus);
       if (cameraStatus.status !== "granted") {
         Alert.alert("Desculpe, precisamos da permissão para acessar a câmera!");
       }
