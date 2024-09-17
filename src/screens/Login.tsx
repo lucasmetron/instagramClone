@@ -7,13 +7,19 @@ import {
   TextInput,
 } from "react-native";
 import IsLoggedInContext from "../context/useLogin";
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
+  const navigation: any = useNavigation();
   const { setIsLoggedIn } = useContext(IsLoggedInContext);
   const [dataLogin, setDataLogin] = useState({ email: "", password: "" });
 
   function login() {
     setIsLoggedIn(true);
+  }
+
+  function register() {
+    navigation.navigate("Register");
   }
 
   return (
@@ -43,7 +49,7 @@ const Login = () => {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={login}>
+      <TouchableOpacity style={styles.button} onPress={register}>
         <Text style={styles.buttonText}>Criar nova conta</Text>
       </TouchableOpacity>
     </View>
