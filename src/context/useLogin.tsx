@@ -5,11 +5,6 @@ interface loginProps {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const initialState: loginProps = {
-  isLoggedIn: true,
-  setIsLoggedIn: () => {},
-};
-
 const IsLoggedInContext = createContext<loginProps>({
   isLoggedIn: false,
   setIsLoggedIn: () => {},

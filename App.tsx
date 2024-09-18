@@ -11,6 +11,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import Navigator from "./src/Navigator";
 import { IsLoggedInProvider } from "./src/context/useLogin";
+import { UsePostsProvider } from "./src/context/usePosts";
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Inter_400Regular, Inter_700Bold });
@@ -26,9 +27,11 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style={styles.container} onLayout={onLayputRootView}>
         <IsLoggedInProvider>
-          <NavigationContainer>
-            <Navigator />
-          </NavigationContainer>
+          <UsePostsProvider>
+            <NavigationContainer>
+              <Navigator />
+            </NavigationContainer>
+          </UsePostsProvider>
         </IsLoggedInProvider>
       </SafeAreaView>
     </SafeAreaProvider>
