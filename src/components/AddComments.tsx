@@ -1,20 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   StyleSheet,
   View,
   TextInput,
   TouchableWithoutFeedback as TWF,
-  Alert,
   Text,
 } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { faker } from "@faker-js/faker";
 
-const AddComments = () => {
+import UsePostsContext from "../context/usePosts";
+
+interface AddCommentsProps {
+  idPost: number;
+}
+
+const AddComments = ({ idPost }: AddCommentsProps) => {
+  const { posts, setPosts } = useContext(UsePostsContext);
   const [comment, setComment] = useState("");
   const [editMode, setEditMode] = useState(false);
 
   function handleAddComment() {
-    Alert.alert("Adicionado", comment);
+    if (comment === "") {
+      setEditMode(false);
+      return;
+    }
+
+    const newList = posts.map((post) => {
+      if (post.id === idPost) {
+        post.coments = [
+          { comment: comment, nickName: faker.person.fullName() },
+          ...post.coments,
+        ];
+      }
+      return post;
+    });
+
+    setPosts(newList);
+    setEditMode(false);
+    setComment("");
   }
 
   return (
@@ -22,6 +46,7 @@ const AddComments = () => {
       {editMode ? (
         <View style={styles.container}>
           <TextInput
+            autoFocus
             style={styles.input}
             value={comment}
             onChangeText={(text) => setComment(text)}
@@ -62,6 +87,11 @@ const styles = StyleSheet.create({
   },
   input: {
     width: "90%",
+    borderWidth: 1,
+    borderColor: "gray",
+    padding: 10,
+    borderRadius: 5,
+    marginRight: 5,
   },
   caption: {
     marginLeft: 10,

@@ -56,6 +56,7 @@ const Feed = () => {
               image={item.image}
               comments={item.coments}
               nameAuthor={item.nickname}
+              idPost={item.id}
             />
           )}
         />

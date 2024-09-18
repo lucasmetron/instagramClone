@@ -11,9 +11,10 @@ interface PostProps {
   image: string;
   comments: CommentProps[];
   nameAuthor: string;
+  idPost: number;
 }
 
-function Post({ image, comments, nameAuthor }: PostProps) {
+function Post({ image, comments, nameAuthor, idPost }: PostProps) {
   return (
     <View style={styles.container}>
       <Image
@@ -23,7 +24,7 @@ function Post({ image, comments, nameAuthor }: PostProps) {
       />
       <Author name={nameAuthor} />
       <Comments comments={comments} />
-      <AddComments />
+      <AddComments idPost={idPost} />
     </View>
   );
 }
