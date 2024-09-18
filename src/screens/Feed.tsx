@@ -13,7 +13,7 @@ const Feed = () => {
 
   function generatePosts() {
     const newPosts: PostProps[] = [];
-    for (let i = 0; i <= 10; i++) {
+    for (let i = 0; i < 10; i++) {
       newPosts.push({
         id: Math.random() * 100,
         nickname: faker.person.fullName(),

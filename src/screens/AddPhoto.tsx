@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useLayoutEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -10,7 +10,11 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
+import { faker } from "@faker-js/faker";
 import * as ImagePicker from "expo-image-picker";
+import { useNavigation } from "@react-navigation/native";
+
+import UsePostsContext from "../context/usePosts";
 
 interface ImageProps {
   uri: string;
@@ -18,8 +22,10 @@ interface ImageProps {
 }
 
 const AddPhoto = () => {
+  const { setPosts, posts } = useContext(UsePostsContext);
   const [image, setImage] = useState<null | ImageProps>(null);
   const [comment, setComment] = useState("");
+  const navigator: any = useNavigation();
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -63,7 +69,29 @@ const AddPhoto = () => {
   };
 
   const save = async () => {
+    if (image === null) {
+      Alert.alert("Insira uma imagem");
+      return;
+    }
+    const newList = [
+      {
+        id: Math.random() * 1000,
+        coments:
+          comment !== ""
+            ? [{ comment: comment, nickName: faker.person.firstName() }]
+            : [],
+        image: image.uri,
+        email: faker.internet.email(),
+        nickname: faker.person.firstName(),
+      },
+      ...posts,
+    ];
+
+    setPosts(newList);
+    setImage(null);
+    setComment("");
     Alert.alert("Imagem adicionada!");
+    navigator.navigate("Feed");
   };
 
   useEffect(() => {
